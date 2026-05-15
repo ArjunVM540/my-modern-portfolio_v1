@@ -61,7 +61,7 @@ function ProjectDetailModal({
         </div>
 
         {/* Scrollable content */}
-        <div className="overflow-y-auto flex-1 min-h-0 px-5 py-4 md:px-7 md:py-5 space-y-5">
+        <div data-lenis-prevent className="overflow-y-auto flex-1 min-h-0 px-5 py-4 md:px-7 md:py-5 space-y-5">
           <p className="text-sm text-white/50 leading-relaxed">{project.description}</p>
 
           {project.details && (
