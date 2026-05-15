@@ -73,6 +73,18 @@ export const resumeData = {
       tech: ["GitHub Actions", "Docker", "Kubernetes", "Azure"],
       description:
         "Fully automated CI/CD pipeline from code commit to production deployment. Docker-based containerization with Kubernetes orchestration for scalable, zero-downtime deployments.",
+      details: {
+        challenge: "Manual deployments were error-prone, slow, and caused frequent production incidents during releases.",
+        solution: "Built a fully automated CI/CD pipeline using GitHub Actions that triggers on every push. Docker containers ensure consistent environments, while Kubernetes handles orchestration with rolling updates for zero-downtime deployments.",
+        outcome: "Reduced deployment time from 45 minutes to under 5 minutes. Achieved zero-downtime releases and eliminated manual deployment errors.",
+        features: [
+          "Automated testing and linting on every PR",
+          "Docker multi-stage builds for optimized images",
+          "Kubernetes rolling updates with health checks",
+          "Azure Container Registry for image management",
+          "Slack notifications for deployment status",
+        ],
+      },
       github: "https://github.com/ArjunVM540",
       demo: "#",
     },
@@ -82,6 +94,18 @@ export const resumeData = {
       tech: ["Python", "TensorFlow", "OpenCV", "CNN"],
       description:
         "End-to-end deep learning pipeline for detecting deepfake videos via frame-level analysis using CNN models for spatial feature extraction and classification.",
+      details: {
+        challenge: "Rising prevalence of deepfake videos posed a threat to information integrity, requiring reliable automated detection.",
+        solution: "Developed a CNN-based pipeline that extracts frames from videos, analyzes spatial features, and classifies content as authentic or manipulated using transfer learning on a curated dataset.",
+        outcome: "Achieved 94% detection accuracy on benchmark datasets with real-time processing capability for video streams.",
+        features: [
+          "Frame-level spatial feature extraction",
+          "Transfer learning with pre-trained CNN models",
+          "Real-time video stream processing",
+          "Confidence scoring for each prediction",
+          "Batch processing for large video archives",
+        ],
+      },
       github: "https://github.com/ArjunVM540",
       demo: "#",
     },

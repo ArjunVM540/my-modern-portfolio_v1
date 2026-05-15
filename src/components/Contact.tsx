@@ -1,4 +1,4 @@
-import { useEffect, useRef, useCallback } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { resumeData } from "../data/resume";
@@ -98,6 +98,80 @@ function MagneticLink({
   );
 }
 
+const FORMSPREE_ID = "xwpkgjba"; // Replace with your Formspree form ID
+
+function ContactForm() {
+  const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setStatus("sending");
+    const form = e.currentTarget;
+    try {
+      const res = await fetch(`https://formspree.io/f/${FORMSPREE_ID}`, {
+        method: "POST",
+        body: new FormData(form),
+        headers: { Accept: "application/json" },
+      });
+      if (res.ok) {
+        setStatus("sent");
+        form.reset();
+        setTimeout(() => setStatus("idle"), 4000);
+      } else {
+        setStatus("error");
+      }
+    } catch {
+      setStatus("error");
+    }
+  };
+
+  return (
+    <form onSubmit={handleSubmit} className="space-y-4">
+      <div>
+        <input
+          type="text"
+          name="name"
+          required
+          placeholder="Your Name"
+          className="w-full px-5 py-3.5 rounded-xl border border-white/[0.06] bg-white/[0.03] text-white placeholder:text-white/30 text-sm focus:outline-none focus:border-cyan-400/30 focus:bg-cyan-400/[0.02] transition-all duration-300"
+        />
+      </div>
+      <div>
+        <input
+          type="email"
+          name="email"
+          required
+          placeholder="Your Email"
+          className="w-full px-5 py-3.5 rounded-xl border border-white/[0.06] bg-white/[0.03] text-white placeholder:text-white/30 text-sm focus:outline-none focus:border-cyan-400/30 focus:bg-cyan-400/[0.02] transition-all duration-300"
+        />
+      </div>
+      <div>
+        <textarea
+          name="message"
+          required
+          rows={5}
+          placeholder="Your Message"
+          className="w-full px-5 py-3.5 rounded-xl border border-white/[0.06] bg-white/[0.03] text-white placeholder:text-white/30 text-sm focus:outline-none focus:border-cyan-400/30 focus:bg-cyan-400/[0.02] transition-all duration-300 resize-none"
+        />
+      </div>
+      <button
+        type="submit"
+        disabled={status === "sending"}
+        data-cursor="pointer"
+        className="magnetic-btn w-full py-3.5 rounded-xl bg-cyan-400 text-black text-sm font-semibold hover:bg-cyan-300 transition-colors duration-300 disabled:opacity-50 disabled:cursor-not-allowed relative overflow-hidden"
+      >
+        {status === "sending"
+          ? "Sending..."
+          : status === "sent"
+          ? "Message Sent!"
+          : status === "error"
+          ? "Failed — Try Again"
+          : "Send Message"}
+      </button>
+    </form>
+  );
+}
+
 export default function Contact() {
   const sectionRef = useRef<HTMLElement>(null);
   const headingRef = useRef<HTMLDivElement>(null);
@@ -171,49 +245,57 @@ export default function Contact() {
           </p>
         </div>
 
-        <div ref={contentRef} className="max-w-2xl mx-auto">
-          <div className="contact-item mb-10">
-            <MagneticLink
-              href={`mailto:${resumeData.email}`}
-              className="group flex items-center justify-center gap-4 px-8 py-5 rounded-2xl border border-white/[0.06] bg-white/[0.02] transition-all duration-500 hover:border-cyan-400/20 hover:bg-cyan-400/[0.03] relative overflow-hidden"
-            >
-              <div className="w-10 h-10 rounded-full bg-cyan-400/10 flex items-center justify-center group-hover:bg-cyan-400/20 transition-colors duration-300">
-                <svg viewBox="0 0 24 24" className="w-5 h-5 text-cyan-400" fill="none" stroke="currentColor" strokeWidth="2">
-                  <rect x="2" y="4" width="20" height="16" rx="2" />
-                  <path d="M22 7l-8.97 5.7a1.94 1.94 0 01-2.06 0L2 7" />
-                </svg>
-              </div>
-              <div className="text-left">
-                <div className="text-sm text-white/40 mb-0.5">Write me at</div>
-                <div className="text-lg font-semibold text-white group-hover:text-cyan-400 transition-colors duration-300">
-                  {resumeData.email}
-                </div>
-              </div>
-              <svg viewBox="0 0 24 24" className="w-5 h-5 text-white/20 ml-auto group-hover:text-cyan-400 group-hover:translate-x-1 transition-all duration-300" fill="none" stroke="currentColor" strokeWidth="2">
-                <path d="M7 17l9.2-9.2M17 17V8H8" />
-              </svg>
-            </MagneticLink>
+        <div ref={contentRef} className="max-w-4xl mx-auto grid md:grid-cols-2 gap-10">
+          {/* Contact Form */}
+          <div className="contact-item">
+            <ContactForm />
           </div>
 
-          <div className="contact-item flex justify-center gap-4">
-            {socials.map((s) => (
+          {/* Contact Info */}
+          <div className="space-y-6">
+            <div className="contact-item">
               <MagneticLink
-                key={s.label}
-                href={s.href}
-                className="group w-14 h-14 rounded-full border border-white/[0.06] bg-white/[0.02] flex items-center justify-center text-white/40 hover:text-cyan-400 hover:border-cyan-400/20 hover:bg-cyan-400/[0.03] transition-all duration-300 relative overflow-hidden"
+                href={`mailto:${resumeData.email}`}
+                className="group flex items-center gap-4 px-6 py-5 rounded-2xl border border-white/[0.06] bg-white/[0.02] transition-all duration-500 hover:border-cyan-400/20 hover:bg-cyan-400/[0.03] relative overflow-hidden"
               >
-                {s.icon}
+                <div className="w-10 h-10 rounded-full bg-cyan-400/10 flex items-center justify-center shrink-0 group-hover:bg-cyan-400/20 transition-colors duration-300">
+                  <svg viewBox="0 0 24 24" className="w-5 h-5 text-cyan-400" fill="none" stroke="currentColor" strokeWidth="2">
+                    <rect x="2" y="4" width="20" height="16" rx="2" />
+                    <path d="M22 7l-8.97 5.7a1.94 1.94 0 01-2.06 0L2 7" />
+                  </svg>
+                </div>
+                <div className="text-left min-w-0">
+                  <div className="text-sm text-white/40 mb-0.5">Write me at</div>
+                  <div className="text-base font-semibold text-white group-hover:text-cyan-400 transition-colors duration-300 truncate">
+                    {resumeData.email}
+                  </div>
+                </div>
+                <svg viewBox="0 0 24 24" className="w-5 h-5 text-white/20 ml-auto shrink-0 group-hover:text-cyan-400 group-hover:translate-x-1 transition-all duration-300" fill="none" stroke="currentColor" strokeWidth="2">
+                  <path d="M7 17l9.2-9.2M17 17V8H8" />
+                </svg>
               </MagneticLink>
-            ))}
-          </div>
+            </div>
 
-          <div className="contact-item mt-10 text-center">
-            <div className="inline-flex items-center gap-2 text-sm text-white/30">
-              <svg viewBox="0 0 24 24" className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2">
-                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" />
-                <circle cx="12" cy="10" r="3" />
-              </svg>
-              {resumeData.location}
+            <div className="contact-item flex justify-center md:justify-start gap-4">
+              {socials.map((s) => (
+                <MagneticLink
+                  key={s.label}
+                  href={s.href}
+                  className="group w-14 h-14 rounded-full border border-white/[0.06] bg-white/[0.02] flex items-center justify-center text-white/40 hover:text-cyan-400 hover:border-cyan-400/20 hover:bg-cyan-400/[0.03] transition-all duration-300 relative overflow-hidden"
+                >
+                  {s.icon}
+                </MagneticLink>
+              ))}
+            </div>
+
+            <div className="contact-item text-center md:text-left">
+              <div className="inline-flex items-center gap-2 text-sm text-white/30">
+                <svg viewBox="0 0 24 24" className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2">
+                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" />
+                  <circle cx="12" cy="10" r="3" />
+                </svg>
+                {resumeData.location}
+              </div>
             </div>
           </div>
         </div>

@@ -14,6 +14,7 @@ import Projects from "./components/Projects";
 import Certifications from "./components/Certifications";
 import Experience from "./components/Experience";
 import Contact from "./components/Contact";
+import BackToTop from "./components/BackToTop";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -121,6 +122,7 @@ export default function App() {
       <ScrollProgress />
       <ParticleField />
       <Navbar />
+      <BackToTop />
       <main className="relative z-10">
         <Hero />
         <About />

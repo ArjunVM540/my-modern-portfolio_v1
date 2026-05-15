@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <rect width="1200" height="630" fill="#050510"/>
+  <text x="100" y="220" font-family="Inter, system-ui, sans-serif" font-size="72" font-weight="900" fill="white" letter-spacing="-2">Arjun V M</text>
+  <text x="100" y="300" font-family="Inter, system-ui, sans-serif" font-size="36" font-weight="400" fill="#00d9ff" opacity="0.8">Cloud &amp; DevOps Engineer</text>
+  <text x="100" y="370" font-family="Inter, system-ui, sans-serif" font-size="22" font-weight="300" fill="white" opacity="0.4">Building Scalable Modern Infrastructure</text>
+  <line x1="100" y1="420" x2="350" y2="420" stroke="#00d9ff" stroke-width="2" opacity="0.5"/>
+  <text x="100" y="470" font-family="JetBrains Mono, monospace" font-size="16" fill="white" opacity="0.3">Azure  ·  Docker  ·  Kubernetes  ·  Terraform  ·  GitHub Actions</text>
+  <rect x="900" y="150" width="200" height="200" rx="20" fill="none" stroke="#00d9ff" stroke-width="1" opacity="0.15" transform="rotate(12 1000 250)"/>
+  <rect x="920" y="170" width="160" height="160" rx="16" fill="none" stroke="#7c3aed" stroke-width="1" opacity="0.1" transform="rotate(-8 1000 250)"/>
+  <circle cx="1000" cy="250" r="40" fill="#00d9ff" opacity="0.05"/>
+</svg>
