@@ -66,6 +66,7 @@ export default function App() {
       about: "radial-gradient(ellipse at 70% 50%, rgba(124,58,237,0.03) 0%, transparent 60%)",
       skills: "radial-gradient(ellipse at 30% 60%, rgba(124,58,237,0.03) 0%, transparent 60%)",
       projects: "radial-gradient(ellipse at 50% 50%, rgba(0,217,255,0.03) 0%, transparent 60%)",
+      achievements: "radial-gradient(ellipse at 40% 45%, rgba(0,217,255,0.03) 0%, transparent 60%)",
       experience: "radial-gradient(ellipse at 20% 40%, rgba(0,217,255,0.03) 0%, transparent 60%)",
       contact: "radial-gradient(ellipse at 60% 80%, rgba(124,58,237,0.04) 0%, transparent 60%)",
     };
