@@ -133,10 +133,10 @@ export default function Navbar() {
         style={{ pointerEvents: "auto" }}
       >
         <div
-          className={`mx-auto max-w-7xl flex items-center justify-between h-16 md:h-20 transition-[background-color,border-color,backdrop-filter] duration-500 border-b ${
+          className={`mx-auto max-w-7xl flex items-center justify-between h-16 md:h-20 transition-all duration-500 ${
             scrolled
-              ? "border-white/[0.06] bg-[#050510]/70 backdrop-blur-xl"
-              : "border-transparent bg-transparent backdrop-blur-none"
+              ? "bg-[#050510]/70 backdrop-blur-xl shadow-[inset_0_-1px_0_0_rgba(255,255,255,0.06)]"
+              : "bg-transparent backdrop-blur-none shadow-none"
           }`}
         >
           <MagneticElement

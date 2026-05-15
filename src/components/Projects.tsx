@@ -35,7 +35,7 @@ function ProjectDetailModal({
     >
       <div className="absolute inset-0 bg-black/80 backdrop-blur-sm" onClick={onClose} />
       <motion.div
-        className="relative w-full md:w-[90vw] md:max-w-xl rounded-t-2xl md:rounded-2xl border border-white/[0.08] bg-[#0a0a1a] flex flex-col max-h-[90vh] md:max-h-[80vh]"
+        className="relative w-full md:w-[90vw] md:max-w-xl rounded-t-2xl md:rounded-2xl border border-white/[0.08] bg-[#0a0a1a] flex flex-col max-h-[85vh] md:max-h-[80vh]"
         initial={{ y: 60, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         exit={{ y: 60, opacity: 0 }}
@@ -61,7 +61,7 @@ function ProjectDetailModal({
         </div>
 
         {/* Scrollable content */}
-        <div className="overflow-y-auto flex-1 px-5 py-4 md:px-7 md:py-5 space-y-5">
+        <div className="overflow-y-auto flex-1 min-h-0 px-5 py-4 md:px-7 md:py-5 space-y-5">
           <p className="text-sm text-white/50 leading-relaxed">{project.description}</p>
 
           {project.details && (
