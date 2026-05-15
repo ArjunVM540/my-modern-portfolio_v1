@@ -245,7 +245,7 @@ export default function Contact() {
           </p>
         </div>
 
-        <div ref={contentRef} className="max-w-4xl mx-auto grid md:grid-cols-2 gap-10">
+        <div ref={contentRef} className="max-w-4xl mx-auto grid md:grid-cols-2 gap-10 items-start">
           {/* Contact Form */}
           <div className="contact-item">
             <ContactForm />
