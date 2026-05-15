@@ -285,6 +285,22 @@ export default function Hero() {
             <div className="absolute inset-0 bg-gradient-to-r from-cyan-300 to-blue-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
           </a>
           <a
+            href="/resume.pdf"
+            download
+            data-cursor="pointer"
+            className="magnetic-btn group px-8 py-3.5 rounded-full border border-white/10 text-white text-sm font-medium hover:border-cyan-400/40 hover:bg-cyan-400/5 transition-all duration-300 overflow-hidden relative"
+          >
+            <span className="relative z-10 flex items-center gap-2">
+              <svg viewBox="0 0 24 24" className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4" />
+                <polyline points="7 10 12 15 17 10" />
+                <line x1="12" y1="15" x2="12" y2="3" />
+              </svg>
+              Download Resume
+            </span>
+            <span className="btn-ripple" />
+          </a>
+          <a
             href="#contact"
             data-cursor="pointer"
             onClick={(e) => {

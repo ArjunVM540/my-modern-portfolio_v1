@@ -76,6 +76,7 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [hidden, setHidden] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState("");
   const lastScroll = useRef(0);
 
   useEffect(() => {
@@ -87,6 +88,25 @@ export default function Navbar() {
     };
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  useEffect(() => {
+    const sectionIds = links.map((l) => l.href.slice(1));
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setActiveSection(`#${entry.target.id}`);
+          }
+        });
+      },
+      { rootMargin: "-40% 0px -55% 0px" }
+    );
+    sectionIds.forEach((id) => {
+      const el = document.getElementById(id);
+      if (el) observer.observe(el);
+    });
+    return () => observer.disconnect();
   }, []);
 
   const scrollTo = (e: React.MouseEvent, href: string) => {
@@ -138,12 +158,19 @@ export default function Navbar() {
                 key={link.href}
                 as="button"
                 strength={0.25}
-                className="nav-link relative px-4 py-2 text-sm text-white/60 hover:text-white transition-colors duration-300 group"
+                className={`nav-link relative px-4 py-2 text-sm transition-colors duration-300 group ${
+                  activeSection === link.href ? "text-cyan-400" : "text-white/60 hover:text-white"
+                }`}
                 onClick={(e) => scrollTo(e, link.href)}
                 data-cursor="pointer"
               >
                 {link.label}
-                <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-px bg-cyan-400 transition-all duration-300 group-hover:w-3/4" style={{ transitionTimingFunction: "cubic-bezier(0.34,1.56,0.64,1)" }} />
+                <span
+                  className={`absolute bottom-0 left-1/2 -translate-x-1/2 h-px bg-cyan-400 transition-all duration-300 ${
+                    activeSection === link.href ? "w-3/4" : "w-0 group-hover:w-3/4"
+                  }`}
+                  style={{ transitionTimingFunction: "cubic-bezier(0.34,1.56,0.64,1)" }}
+                />
               </MagneticElement>
             ))}
             <MagneticElement
@@ -200,7 +227,9 @@ export default function Navbar() {
               <motion.button
                 key={link.href}
                 onClick={(e) => scrollTo(e, link.href)}
-                className="text-3xl font-bold text-white hover:text-cyan-400 transition-colors"
+                className={`text-3xl font-bold transition-colors ${
+                  activeSection === link.href ? "text-cyan-400" : "text-white hover:text-cyan-400"
+                }`}
                 initial={{ y: 30, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 exit={{ y: -20, opacity: 0 }}
