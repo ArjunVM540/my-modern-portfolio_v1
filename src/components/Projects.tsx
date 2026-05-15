@@ -311,7 +311,7 @@ export default function Projects() {
     <section
       ref={sectionRef}
       id="projects"
-      className="relative py-32 md:py-44 overflow-hidden"
+      className="relative py-32 md:py-44 overflow-x-clip"
     >
       <div className="absolute -right-[25%] bottom-0 w-[50vw] h-[50vw] rounded-full bg-blue-500/[0.02] blur-[120px] pointer-events-none" />
 

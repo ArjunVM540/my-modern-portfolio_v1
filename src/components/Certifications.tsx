@@ -219,7 +219,7 @@ export default function Certifications() {
     <section
       ref={sectionRef}
       id="achievements"
-      className="relative py-32 md:py-44 overflow-hidden"
+      className="relative py-32 md:py-44 overflow-x-clip"
     >
       <div className="absolute -left-[25%] top-1/3 w-[45vw] h-[45vw] rounded-full bg-cyan-500/[0.02] blur-[120px] pointer-events-none" />
 

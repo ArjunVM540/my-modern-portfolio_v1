@@ -212,7 +212,7 @@ export default function Skills() {
   }, []);
 
   return (
-    <section ref={sectionRef} id="skills" className="relative py-32 md:py-44 overflow-hidden">
+    <section ref={sectionRef} id="skills" className="relative py-32 md:py-44 overflow-x-clip">
       <div className="absolute -left-[30%] top-1/4 w-[50vw] h-[50vw] rounded-full bg-purple-500/[0.02] blur-[120px] pointer-events-none" />
       <div className="max-w-7xl mx-auto px-6 md:px-12">
         <div ref={headingRef} className="mb-16">

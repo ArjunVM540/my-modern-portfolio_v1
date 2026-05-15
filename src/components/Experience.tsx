@@ -96,7 +96,7 @@ export default function Experience() {
     <section
       ref={sectionRef}
       id="experience"
-      className="relative py-32 md:py-44 overflow-hidden"
+      className="relative py-32 md:py-44 overflow-x-clip"
     >
       <div className="absolute -left-[20%] bottom-1/4 w-[40vw] h-[40vw] rounded-full bg-cyan-500/[0.02] blur-[120px] pointer-events-none" />
 

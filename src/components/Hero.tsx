@@ -187,7 +187,7 @@ export default function Hero() {
     <section
       ref={sectionRef}
       id="hero"
-      className="relative min-h-screen flex items-center justify-center overflow-hidden"
+      className="relative min-h-screen flex items-center justify-center overflow-x-clip"
     >
       {/* Parallax layer: gradient orbs (midground) */}
       <div

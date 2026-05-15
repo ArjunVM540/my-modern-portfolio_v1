@@ -97,7 +97,7 @@ export default function About() {
     <section
       ref={sectionRef}
       id="about"
-      className="relative py-32 md:py-44 overflow-hidden"
+      className="relative py-32 md:py-44 overflow-x-clip"
     >
       <div className="absolute -right-[30%] top-0 w-[60vw] h-[60vw] rounded-full bg-cyan-500/[0.02] blur-[120px] pointer-events-none" />
 

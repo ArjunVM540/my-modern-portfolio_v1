@@ -222,7 +222,7 @@ export default function Contact() {
   }, []);
 
   return (
-    <section ref={sectionRef} id="contact" className="relative py-32 md:py-44 overflow-hidden">
+    <section ref={sectionRef} id="contact" className="relative py-32 md:py-44 overflow-x-clip">
       <div className="absolute -right-[20%] -bottom-[20%] w-[50vw] h-[50vw] rounded-full bg-cyan-500/[0.03] blur-[120px] pointer-events-none" />
       <div className="absolute -left-[20%] -top-[10%] w-[40vw] h-[40vw] rounded-full bg-purple-500/[0.02] blur-[120px] pointer-events-none" />
 
