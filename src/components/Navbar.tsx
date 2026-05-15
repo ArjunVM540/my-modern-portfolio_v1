@@ -126,18 +126,18 @@ export default function Navbar() {
   return (
     <>
       <motion.nav
-        className="fixed top-0 left-0 right-0 z-50 px-6 md:px-12"
+        className={`fixed top-0 left-0 right-0 z-50 px-6 md:px-12 transition-all duration-500 ${
+          scrolled
+            ? "bg-[#050510]/70 backdrop-blur-xl border-b border-white/[0.08]"
+            : "bg-transparent backdrop-blur-none border-b border-transparent"
+        }`}
         initial={{ y: -100 }}
         animate={{ y: hidden && !menuOpen ? -100 : 0 }}
         transition={{ duration: 0.35, ease: [0.65, 0.05, 0, 1] }}
         style={{ pointerEvents: "auto" }}
       >
         <div
-          className={`mx-auto max-w-7xl flex items-center justify-between h-16 md:h-20 px-6 transition-all duration-500 ${
-            scrolled
-              ? "bg-[#050510]/70 backdrop-blur-xl border-b border-white/[0.08]"
-              : "bg-transparent backdrop-blur-none border-b border-transparent"
-          }`}
+          className="mx-auto max-w-7xl flex items-center justify-between h-16 md:h-20"
         >
           <MagneticElement
             as="button"
