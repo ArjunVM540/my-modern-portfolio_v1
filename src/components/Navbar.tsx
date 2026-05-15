@@ -135,8 +135,8 @@ export default function Navbar() {
         <div
           className={`mx-auto max-w-7xl flex items-center justify-between h-16 md:h-20 px-6 transition-all duration-500 ${
             scrolled
-              ? "bg-[#050510]/70 backdrop-blur-xl rounded-2xl border border-white/[0.08]"
-              : "bg-transparent backdrop-blur-none border border-transparent"
+              ? "bg-[#050510]/70 backdrop-blur-xl border-b border-white/[0.08]"
+              : "bg-transparent backdrop-blur-none border-b border-transparent"
           }`}
         >
           <MagneticElement
