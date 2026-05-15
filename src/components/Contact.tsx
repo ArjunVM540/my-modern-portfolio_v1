@@ -98,7 +98,7 @@ function MagneticLink({
   );
 }
 
-const FORMSPREE_ID = "xwpkgjba"; // Replace with your Formspree form ID
+const FORMSPREE_ID = "xnjwkewg";
 
 function ContactForm() {
   const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
